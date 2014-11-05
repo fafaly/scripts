@@ -3,7 +3,7 @@
 dpx_dir='/z/data/WindTerminal/dpx/'
 netvalue_dir='/z/data/WindDB/production/NetValue/'
 fdate=$1
-fnetv=$netvalue_dir$fdate'.csv'
+fnetv=$netvalue_dir$fdate'.NetValue.csv'
 fdpx=$dpx_dir$fdate'.dpx.csv'
 
 awk -F ',' '
