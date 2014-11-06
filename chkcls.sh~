@@ -8,7 +8,7 @@ fnetv=$netvalue_dir$fdate'.NetValue.csv'
 fdpx=$dpx_dir$fdate'.dpx.csv'
 
 #first convert xls to csv
-./xls2csv_xlrd.py $origin_netv $fnetv
+./xls2csv_xlrd.py $origin_netv $netv
 
 awk -F ',' '
 	BEGIN{
