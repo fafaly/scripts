@@ -124,7 +124,7 @@ if __name__ == '__main__':
 		fdate=sys.argv[1]
 	in_forigin = "账户对账单_每日_8100000150_高莹莹_"+fdate + ".xls"
 	in_fname = fdate+".zx_account.csv"
-	out_fname = fdate + ".trd_account.csv"
+	out_fname = fdate + "trd_account.csv"
 	os.system("./xls2csv_xlrd.py "+ in_dir + in_forigin + " " + in_dir + in_fname)
 	#convert2utf8()
 	getrealaccount()
