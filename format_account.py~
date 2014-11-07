@@ -112,6 +112,8 @@ def mergeLine():
 					(mergelist[j][0],mergelist[j][1], mergelist[j][2], \
 						mergelist[j][3],mergelist[j][4],mergelist[j][5],mergelist[j][6],mergelist[j][7],mergelist[j][8]))
 	fpnew.close()
+	print "MerLine success.the output file created successful in \
+		"+out_dir+out_fname
 	#pri(mergelist)
 
 if __name__ == '__main__':
@@ -124,7 +126,7 @@ if __name__ == '__main__':
 		fdate=sys.argv[1]
 	in_forigin = "账户对账单_每日_8100000150_高莹莹_"+fdate + ".xls"
 	in_fname = fdate+".zx_account.csv"
-	out_fname = fdate + "trd_account.csv"
+	out_fname = fdate + ".trd_account.csv"
 	os.system("./xls2csv_xlrd.py "+ in_dir + in_forigin + " " + in_dir + in_fname)
 	#convert2utf8()
 	getrealaccount()

@@ -4,10 +4,24 @@ mydate=`date +%Y%m%d`
 myaccdir='C:\Users\fafaly\Documents\Visual Studio 2013\Projects\FileCreator\FileCreator\our_account'
 
 fdate=$1
-itsaccfile=$fdate'.trd_account.csv'
+
+./format_account.py $fdate
+
 myaccfile='Z:\data\WindDB\production\Citics_dailyDetails\our_account\'$fdate'.account.csv'
 out_dir='Z:\data\WindDB\production\Citics_dailyDetails\cmpret\'
-in_zx_dir='Z:\data\WindDB\production\Citics_dailyDetails\trd_account\'
+itsaccfile='Z:\data\WindDB\production\Citics_dailyDetails\trd_account\'$fdate'.trd_account.csv'
+
+
+if [ ! -f "$myaccfile" ];then
+	echo 'The file '$myaccfile'is not existed'
+	echo 'Check it please!'
+	exit 1
+fi
+if [ ! -f "$itsaccfile" ];then
+	echo 'The file '$itsaccfile'is not existed'
+	echo 'Check it please!'
+	exit 1
+fi
 
 if [ "$1" = "" ];then
 	echo "please enter the date"
@@ -40,6 +54,6 @@ awk -F ',' -v OFS=',' '
 		clear[$1]=$9
 
 	}
-	' $in_zx_dir/$itsaccfile $myaccfile > $out_dir/$fdate'.acc_cmp_ret.csv'
+	' $itsaccfile $myaccfile > $out_dir/$fdate'.acc_cmp_ret.csv'
 
 	echo 'Excuted Successful!!'

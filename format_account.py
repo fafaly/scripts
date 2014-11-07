@@ -112,6 +112,8 @@ def mergeLine():
 					(mergelist[j][0],mergelist[j][1], mergelist[j][2], \
 						mergelist[j][3],mergelist[j][4],mergelist[j][5],mergelist[j][6],mergelist[j][7],mergelist[j][8]))
 	fpnew.close()
+	print "MerLine success.The output file created successful in \
+		"+out_dir+out_fname
 	#pri(mergelist)
 
 if __name__ == '__main__':
