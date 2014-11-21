@@ -48,18 +48,22 @@ awk -F ',' -v OFS=',' '
 ' $new_pos $trade_dir >> $new_pos
 
 awk -F ',' -v OFS=',' '
-	BEGIN{ret=0}
+	BEGIN{ret=0;count1=0;count2=0}
 	NR==FNR&&FNR>2{
 		trade[$1]=$1;
-		shr[$1]=$2
+		shr[$1]=$2;
+		count1=count1+1
 	}
 	NR>FNR&&FNR>1&&trade[$1]{
 		cmpret=$2-shr[$1]
-		print $1,$2-shr[$1]
+		/*print $1,$2-shr[$1]*/
 		if(cmpret!=0)
 			ret=1;
+		count2=count2+1
 	}
 	END{
+		if(count1!=count2)
+			printf("the size is different pos1:%d pos2:%d",count1,count2)
 		if(ret==0)
 			print "check finish!The pos file is correct!"
 		else
