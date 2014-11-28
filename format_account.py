@@ -6,7 +6,7 @@ import sys
 import csv
 import re
 
-fdate="20130922"
+fdate="20140926"
 in_forigin = "账户对账单_每日_8100000150_高莹莹_"+fdate + ".xls"
 in_fname = fdate+".zx_account.csv"
 out_fname = fdate + ".trd_account.csv"
@@ -83,7 +83,7 @@ def mergeLine():
 	mergelist.append(csvlist[0])
 	count = 1 #记录相同的有多少个
 	j =0
-	fpnew.write("#tk,trade,rest_shr,tpx,happen_cash,commission,stamp_tax,transfer,clearing\n")
+	fpnew.write("#tk,trade,rest_shr,tpx,deal_cash,happen_cash,commission,stamp_tax,transfer\n")
 	for i in range(1,len(csvlist)):
 		if cmp(csvlist[i][0],lasttk)==0:
 			count = count + 1

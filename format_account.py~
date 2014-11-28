@@ -6,7 +6,7 @@ import sys
 import csv
 import re
 
-fdate="20130922"
+fdate="20140926"
 in_forigin = "账户对账单_每日_8100000150_高莹莹_"+fdate + ".xls"
 in_fname = fdate+".zx_account.csv"
 out_fname = fdate + ".trd_account.csv"
@@ -112,7 +112,7 @@ def mergeLine():
 					(mergelist[j][0],mergelist[j][1], mergelist[j][2], \
 						mergelist[j][3],mergelist[j][4],mergelist[j][5],mergelist[j][6],mergelist[j][7],mergelist[j][8]))
 	fpnew.close()
-	print "MerLine success.the output file created successful in \
+	print "MerLine success.The output file created successful in \
 		"+out_dir+out_fname
 	#pri(mergelist)
 
