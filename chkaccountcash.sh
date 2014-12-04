@@ -1,9 +1,13 @@
 #!/bin/sh
 
-fdate=`date +%Y%m%d`
 fdate=$1
 
+zx_account_dir='Z:\data\WindDB\production\Citics_dailyDetails\'
 accname=$zx_account_dir$fdate'.zx_account.csv'
+
+echo -e "----------check account total asset--------------"
+echo -e '[INFO] '$accname
+
 awk -F ',' 'BEGIN{ret=0;st=0;ed=0;amt=0;assetindex=0}
 			assetindex==1{rest=substr($3,2,length($3)-2);asset=substr($6,2,length($6)-2);assetindex++}
 			substr($1,2,4)=="客户代码"{assetindex++}
@@ -18,13 +22,13 @@ awk -F ',' 'BEGIN{ret=0;st=0;ed=0;amt=0;assetindex=0}
 				ourasset=amt+rest;
 				ourasset=sprintf("%.3f",ourasset);
 				asset=sprintf("%.3f",asset);
+				printf("[INFO] share total cash:%f,rest asset:%f,our asset:%f\n[INFO] account_s total asset:%f\n",amt,rest,ourasset,asset);
 				if(ourasset==asset){
-					print "the total asset is correct"
+					print "[INFO] The total asset is correct"
 				}
 				else{
-					print "amt + rest != asset.Please check"
+					print "[WARN] amt + rest != asset.Please check"
 				}
-				printf("share total cash:%f,rest asset:%f,our asset:%f\naccount_s total asset:%f",amt,rest,ourasset,asset);
 				
 			} 
 

@@ -142,7 +142,6 @@ awk -F ',' '
 		}
 		if(tpx[$1]-$3!=0)		
 		{
-			print tpx[$1],$3;
 			ret=1;
 			printf("tk:%s shr:%d tpx:%d\n",$1,shr[$1]-$2,tpx[$1]-$3)
 		}

@@ -3,12 +3,16 @@
 dpx_dir='/z/data/WindTerminal/dpx/'
 netvalue_dir='/z/data/WindDB/production/NetValue/'
 fdate=$1
-origin_netv=$netvalue_dir$fdate'委托资产资产估值表(A081).xls'
+#origin_netv=$netvalue_dir$fdate'委托资产资产估值表(A081).xls'
 fnetv=$netvalue_dir$fdate'.NetValue.csv'
 fdpx=$dpx_dir$fdate'.dpx.csv'
 
 #first convert xls to csv
-./xls2csv_xlrd.py $origin_netv $fnetv
+#./xls2csv_xlrd.py $origin_netv $fnetv
+
+echo --------check closing price---------
+echo '[INFO] '$fnetv
+echo '[INFO] '$fdpx
 
 awk -F ',' '
 	BEGIN{
@@ -28,8 +32,8 @@ awk -F ',' '
 	}
 	END{
 		if(ret==0)
-			print "All the data is correct!"
+			print "[INFO] The closing price is correct!"
 		else
-			print "Some data is not correct,please check!"
+			print "[WARN] Some data is not correct,please check!"
 	}
 	' $fdpx $fnetv

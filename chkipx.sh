@@ -2,23 +2,37 @@
 
 fdate=`date +%YYmmdd`
 fdate=$1
-IPX_DIR=""
+IPX_DIR="/z/data/WindTerminal/ipx/"
 fname=$IPX_DIR$fdate'.ipx.csv'
 
 echo -----------ipx file checking-----------
-echo filename:$fname
+echo '[INFO] 'Filename:$fname
+fsize=`ls -ld $fname | awk '{print int($5/1024)}'`
+echo '[INFO] Size:'$fsize'KB'
 
 awk -F ',' '
 	BEGIN{count=0}
-	{tk=$1;for(i=2;i<NF;i+=2)if($i==0)print tk,count++;}
+	{
+			tk=$1;
+			nodeal=1;
+			for(i=3;i<NF;i+=2)
+			{
+				if($i!=0)
+				{
+					nodeal=0;
+					break;
+				}
+			}
+			if(nodeal==1)
+				count++;
+	}
 	END{
-		printf("numbers of wrong price:%d\nstock number:%d\n",count,NR)
-		if(NR>2500&&NR<2600&&count==0)
-			print "The ipx file is correct!"
+		printf("[INFO] Zero trading volunmes number:%d\n[INFO] Stock number:%d\n",count,NR)
+		if(NR>2500&&NR<2600)
+			print "[INFO] The ipx file is correct!"
 		else
-			print "some value is wrong please create the file again"
+			print "[WARN] The size of the ipx is abnormal.Check it please."
 		}
 	' $fname
-
 
 
