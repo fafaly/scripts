@@ -1,0 +1,29 @@
+---------  check net value ------
+[INFO] the cash in net value minus the cash in dailyDetails=-22660.12
+correct
+----------chech net value-------
+[INFO] the stock value in net value= the stock value in dailyDetails
+correct
+----------check account total asset--------------
+
+[INFO] Z:\data\WindDB\production\Citics_dailyDetails\20141202.zx_account.csv
+
+[INFO] The total asset is correct
+
+[INFO] share total cash:9589869.780000,rest asset:69544.450000,our asset:9659414.230000
+[INFO] account_s total asset:9659414.230000
+-------- check cash of account and pos ----------
+[INFO] Z:\data\WindDB\production\position\20141202.pos.csv
+[INFO] Z:\data\WindDB\production\Citics_dailyDetails\20141202.zx_account.csv
+[INFO] The size of account pos:63,our position.csv : 63
+[INFO] The accounts position data is the same as the position.csv
+--------check closing price---------
+[INFO] /z/data/WindDB/production/NetValue/20141202.NetValue.csv
+[INFO] /z/data/WindTerminal/dpx/20141202.dpx.csv
+[INFO] The closing price is correct!
+-----------ipx file checking-----------
+[INFO] Filename:/z/data/WindTerminal/ipx/20141202.ipx.csv
+[INFO] Size:5597KB
+[INFO] Zero trading volunmes number:267
+[INFO] Stock number:2572
+[INFO] The ipx file is correct!

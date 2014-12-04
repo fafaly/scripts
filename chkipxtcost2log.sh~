@@ -1,0 +1,5 @@
+#!/bin/sh
+
+fdate=`date +%Y%m%d`
+ldate=`date -d "$fdate -1 day" +"%Y%m%d"`
+./chkipx.sh $ldate >> $log_dir

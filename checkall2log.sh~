@@ -1,0 +1,25 @@
+#!/bin/sh
+
+
+fdate=`date +%Y%m%d`
+ldate=`date -d "$fdate -1 day" +"%Y%m%d"`
+
+zx_acc_dir='Z:\data\WindDB\production\Citics_dailyDetails\'
+nv_dir='Z:\data\WindDB\production\NetValue\'
+log_dir=$zx_acc_dir'\log\'$fdate'.log.txt'
+
+./xls2csv_xlrd.py $zx_acc_dir'账户对账单_每日_8100000150_高莹莹_'$ldate'.xls' $zx_acc_dir$ldate'.zx_account.csv'
+
+./xls2csv_xlrd.py $nv_dir$ldate'委托资产资产估值表.xls' $nv_dir$ldate'.NetValue.csv'
+
+./chkaccountcash.sh $ldate >> $log_dir
+
+./chkaccountpos.sh $ldate >>  $log_dir
+
+#./chkacctrade.sh $fdate >> $log_dir
+
+./chkcls.sh $ldate >> $log_dir
+
+#./chknetvalue.sh $fdate >> $log_dir
+
+
