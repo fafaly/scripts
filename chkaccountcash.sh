@@ -29,7 +29,7 @@ awk -F ',' 'BEGIN{ret=0;st=0;ed=0;amt=0;assetindex=0}
 				else{
 					print "[WARN] amt + rest != asset.Please check"
 				}
-				
+				print ""	
 			} 
 
 ' $accname

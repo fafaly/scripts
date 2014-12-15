@@ -32,6 +32,7 @@ awk -F ',' '
 			print "[INFO] The ipx file is correct!"
 		else
 			print "[WARN] The size of the ipx is abnormal.Check it please."
+		print ""
 		}
 	' $fname
 

@@ -138,7 +138,7 @@ awk -F ',' '
 		if(shr[$1]-$2!=0)		
 		{
 			ret=1;
-			printf("tk:%s shr:%s\n",$1,shr[$1])
+			printf("tk:%s shr:%s\n",$1,shr[$1]-$2)
 		}
 		if(tpx[$1]-$3!=0)		
 		{

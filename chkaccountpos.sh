@@ -24,5 +24,6 @@ awk -F ',' 'BEGIN{bg=0;ed=0;count1=0;count2=0;ret=0}
 			{a=substr($1,2,4); if(a=="股东帐号")bg=1;}
 			END{
 			printf("[INFO] The rows of account pos:%d,our position.csv :% d\n",count1,count2)
-			if(ret==0){print "[INFO] The accounts position data is the same as the position.csv"} else{ print "[WARN] Some value is different please check"}}
+			if(ret==0){print "[INFO] The accounts position data is the same as the position.csv"} else{ print "[WARN] Some value is different please check"}
+			print ""}
 			' $accname $posname

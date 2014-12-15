@@ -21,7 +21,7 @@ awk -F ',' 'BEGIN{bg=0;ed=0;count1=0;count2=0;ret=0}
 				count2++;
 				if(cash[tk]-c2!=0)
 				{
-					printf("[WARN] tk:%s account ref value:%f netvalue ref value:%f\n",tk,cash[tk],c2);
+					printf("[WARN] tk:%s account ref value:%f netvalue ref value:%f",tk,cash[tk],c2);
 					ret=1;
 				}
 			}

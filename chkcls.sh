@@ -1,6 +1,6 @@
 #./bin/sh
 
-dpx_dir='/z/data/WindTerminal/dpx/'
+dpx_dir='/z/data/WindDB/dpx/'
 netvalue_dir='/z/data/WindDB/production/NetValue/'
 fdate=$1
 #origin_netv=$netvalue_dir$fdate'委托资产资产估值表(A081).xls'
@@ -35,5 +35,6 @@ awk -F ',' '
 			print "[INFO] The closing price is correct!"
 		else
 			print "[WARN] Some data is not correct,please check!"
+		print ""
 	}
 	' $fdpx $fnetv

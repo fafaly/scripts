@@ -32,8 +32,9 @@ awk -F ',' '
 	}
 	END{
 		if(ret==0)
-			print "[INFO] All the data is correct!"
+			print "[INFO] The closing price is correct!"
 		else
 			print "[WARN] Some data is not correct,please check!"
+		print ""
 	}
 	' $fdpx $fnetv

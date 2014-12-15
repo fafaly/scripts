@@ -7,19 +7,34 @@ ldate=`date -d "$fdate -1 day" +"%Y%m%d"`
 zx_acc_dir='Z:\data\WindDB\production\Citics_dailyDetails\'
 nv_dir='Z:\data\WindDB\production\NetValue\'
 log_dir=$zx_acc_dir'\log\'$fdate'.log.txt'
+lfile=$zx_acc_dir'\log\'$ldate'.log.txt'
 
-./xls2csv_xlrd.py $zx_acc_dir'账户对账单_每日_8100000150_高莹莹_'$ldate'.xls' $zx_acc_dir$ldate'.zx_account.csv'
+if [ -e "$lfile" ];then
+	echo last date:$ldate
+else
+	ldate=`date -d "$fdate -3 day" +"%Y%m%d"`
+	echo last date:$ldate
+fi
 
-./xls2csv_xlrd.py $nv_dir$ldate'委托资产资产估值表.xls' $nv_dir$ldate'.NetValue.csv'
+accfname=$zx_acc_dir'账户对账单_每日_8100000150_高莹莹_'$ldate'.xls'
+nvfname=$nv_dir$ldate'委托资产资产估值表.xls'
+if [ -e "$accfname" ];then
+	./xls2csv_xlrd.py $accfname $zx_acc_dir$ldate'.zx_account.csv'
+	./format_account.py $ldate 
+	./chkaccountcash.sh $ldate >> $log_dir
+	./chkaccountpos.sh $ldate >>  $log_dir
+	./chkacctrade.sh $ldate >> $log_dir
+	./chk_nv_acc_marketvalue $ldate >> $log_dir
+else
+	echo '[WARN] '$accfname' is not exist' >> $log_dir
+fi
 
-./chkaccountcash.sh $ldate >> $log_dir
-
-./chkaccountpos.sh $ldate >>  $log_dir
-
-./chkacctrade.sh $fdate >> $log_dir
-
-./chkcls.sh $ldate >> $log_dir
-
-./chknetvalue.sh $fdate >> $log_dir
+if [ -e $nvfname ];then
+	./xls2csv_xlrd.py $nvfname $nv_dir$ldate'.NetValue.csv'
+	./chkcls.sh $ldate >> $log_dir
+	./chknetvalue.sh $ldate >> $log_dir
+else
+	echo '[WARN] '$nvfname' is not exist' >> $log_dir
+fi
 
 

@@ -5,14 +5,14 @@
 fdate=`date +%Y%m%d`
 #fdate="20141121"
 
-NEW_POS1='D:\Project\FileCreator\FileCreator\production\out_position\'$fdate'.pos.csv'
+NEW_POS1='Z:\data\WindDB\production\position\auto\'$fdate'.pos.csv'
 OLD_POS1='Z:\data\WindDB\production\position\'$fdate'.pos.csv'
-NEW_POS2='D:\Project\FileCreator\FileCreator\production2\out_position\'$fdate'.pos.csv'
+NEW_POS2='Z:\data\WindDB\production2\position\auto\'$fdate'.pos.csv'
 OLD_POS2='Z:\data\WindDB\production2\position\'$fdate'.pos.csv'
 
-NEW_TRADE1='D:\Project\FileCreator\FileCreator\production\out_trade\'$fdate'.trade.csv'
+NEW_TRADE1='Z:\data\WindDB\production\trade\auto\'$fdate'.trade.csv'
 OLD_TRADE1='Z:\data\WindDB\production\trade\'$fdate'.trade.csv'
-NEW_TRADE2='D:\Project\FileCreator\FileCreator\production2\out_trade\'$fdate'.trade.csv'
+NEW_TRADE2='Z:\data\WindDB\production2\trade\auto\'$fdate'.trade.csv'
 OLD_TRADE2='Z:\data\WindDB\production2\trade\'$fdate'.trade.csv'
 
 echo "------Run production 1 pos new and old------"

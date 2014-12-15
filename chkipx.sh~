@@ -27,7 +27,7 @@ awk -F ',' '
 				count++;
 	}
 	END{
-		printf("[INFO] Zero trading volunmes number:%d\nStock number:%d\n",count,NR)
+		printf("[INFO] Zero trading volunmes number:%d\n[INFO] Stock number:%d\n",count,NR)
 		if(NR>2500&&NR<2600)
 			print "[INFO] The ipx file is correct!"
 		else

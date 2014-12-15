@@ -33,5 +33,6 @@ awk -F ',' 'BEGIN{ret=0;}
 					print "[INFO] Each stock_s happen cash is the same."
 				else
 					print "[WARN] Some value is wrong please check!"
+				print ""
 			}	
 			' $accname $tname
